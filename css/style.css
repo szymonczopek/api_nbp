@@ -29,6 +29,7 @@ td{
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     text-align: center;
+    height: 30px;
 }
 th{
     font-weight: bold;

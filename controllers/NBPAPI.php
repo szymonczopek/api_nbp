@@ -1,5 +1,5 @@
 <?php
-require '../controllers/Database.php';
+
 
     class NBPAPI {
         private $urlRatesAll = 'http://api.nbp.pl/api/exchangerates/tables/A?format=json';
@@ -22,20 +22,19 @@ require '../controllers/Database.php';
                 echo 'Error: ' . $e->getMessage();
             }
         }
+
     }
+/*$nbpApi = new NBPAPI();
+$ratesAll = $nbpApi->getAll();
 
-    $nbpApi = new NBPAPI();
-    $ratesAll = $nbpApi->getAll();
+$db = new Database("localhost", "root", "", "api_nbp");
 
-    $db = new Database("localhost", "root", "", "api_nbp");
+$db->addOrUpdateRecord($ratesAll[0]['rates']);
 
-    $db->addOrUpdateRecord($ratesAll[0]['rates']);
+$db->closeConnection();
 
-    $db->closeConnection();
+$ratesAll[] = ['message'=> 'Successfully import.'];
+header('Content-Type: application/json');
 
-    $ratesAll[] = ['message'=> 'Zaimportowano pomyślnie.'];
-    header('Content-Type: application/json');
-
-    echo json_encode($ratesAll);
-
+echo json_encode($ratesAll);*/
 ?>

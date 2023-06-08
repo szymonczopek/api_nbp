@@ -67,7 +67,7 @@
     buttonGetAll.addEventListener('click', async () => {
          var isError = false;
          var message = '';
-        await fetch('http://localhost:63342/api_nbp/controllers/NBPAPI.php', {
+        await fetch('http://localhost:63342/api_nbp/routes.php?page=getAll', {
             headers: {
                 'Content-Type': 'application/json',
             },
