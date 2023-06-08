@@ -7,22 +7,26 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="mainDiv">
-        <div>
-            <h1>API NBP</h1>
+    <main>
+        <div id="mainDiv">
+            <div>
+                <h1>API NBP</h1>
+            </div>
+            <div>
+                <button type="button" id="buttonGetAll">Get currency rates</button>
+            </div>
         </div>
-        <div>
-            <button type="button" id="buttonGetAll">Pobierz kursy walut</button>
-        </div>
-    </div>
 
-    <table id="TableDiv">
-        <thead id="TableHead">
+        <table id="TableDiv">
+            <thead id="TableHead">
 
-        </thead>
-        <tbody id="TableBody">
-        </tbody>
-    </table>
+            </thead>
+            <tbody id="TableBody">
+            </tbody>
+        </table>
+        <footer>Szymon Czopek</footer>
+    </main>
+</body>
 <script>
     const buttonGetAll = document.getElementById('buttonGetAll');
     const messageDiv = document.createElement('div');

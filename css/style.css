@@ -1,6 +1,10 @@
 #mainDiv{
     display: flex;
     align-items: center;
+   margin: 0px 20px;
+}
+body{
+    margin: 0;
 }
 body > div{
     margin: 0 50px;
@@ -30,4 +34,22 @@ th{
     font-weight: bold;
     border: 2px solid black;
     background: orange;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 45%;
+    width: 10%;
+    height: 4vh;
+    background-color: #f1f1f1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+    color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
