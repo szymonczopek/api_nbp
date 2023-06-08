@@ -14,7 +14,7 @@ class NBPAPI {
 $nbpApi = new NBPAPI();
 
 $ratesAll = $nbpApi->getAll();
-$ratesAll[] = array('message'=> 'Zaimportowano pomyślnieee.');
+$ratesAll[] = array('message'=> 'Zaimportowano pomyślnie.');
 header('Content-Type: application/json');
 
 echo json_encode($ratesAll);

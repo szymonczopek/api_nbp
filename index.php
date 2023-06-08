@@ -9,7 +9,7 @@
 <body>
     <div id="mainDiv">
         <div>
-            <h1>API NBPeeee</h1>
+            <h1>API NBP</h1>
         </div>
         <div>
             <button type="button" id="buttonGetAll">Pobierz kursy walut</button>
@@ -23,7 +23,7 @@
     buttonGetAll.addEventListener('click', async () => {
          var isError = false;
          var message = '';
-        await fetch('http://localhost:63342/api_nbp/controllers/nbpapi.php', {
+        await fetch('http://localhost/api_nbp/controllers/nbpapi.php', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -38,8 +38,8 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message']
-               // rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']))
-                console.log(rates)
+                rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']))
+                
             })
             .catch((error) => {
                 isError = true;
