@@ -1,0 +1,23 @@
+#mainDiv{
+    display: flex;
+    align-items: center;
+}
+body > div{
+    margin: 0 50px;
+}
+button{
+    color: white;
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+    border-top: black 2px solid;
+    height: 40px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin: 5px;
+    margin: 0 50px;
+}
+button:hover{
+    opacity: 0.6;
+}
+#buttonGetAll{
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+}
