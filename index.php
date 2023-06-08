@@ -23,7 +23,7 @@
     buttonGetAll.addEventListener('click', async () => {
          var isError = false;
          var message = '';
-        await fetch('http://localhost/api_nbp/controllers/nbpapi.php', {
+        await fetch('http://localhost:63342/api_nbp/controllers/NBPAPI.php', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -39,7 +39,6 @@
                 const rates = data[0]['rates'];
                 message = data[1]['message']
                 rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']))
-                
             })
             .catch((error) => {
                 isError = true;
