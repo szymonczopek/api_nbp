@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>API NBP Szymon Czopek</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -36,7 +38,8 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message']
-                rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']))
+               // rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']))
+                console.log(rates)
             })
             .catch((error) => {
                 isError = true;
