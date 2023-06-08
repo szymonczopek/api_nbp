@@ -17,4 +17,5 @@ if (filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING) === 'getAll') {
 
     echo json_encode($ratesAll);
 }
+
 ?>
