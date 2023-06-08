@@ -44,7 +44,7 @@
     }
 
     function displayRates(data){
-        const headers = ['Currency','Code','Value'];
+        const headers = ['Currency','Code','PLN'];
         displayHeader(headers);
         var counter = 1
 
