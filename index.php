@@ -9,7 +9,7 @@
 <body>
     <div id="mainDiv">
         <div>
-            <h1>API NBP</h1>
+            <h1>API NBPeeee</h1>
         </div>
         <div>
             <button type="button" id="buttonGetAll">Pobierz kursy walut</button>
