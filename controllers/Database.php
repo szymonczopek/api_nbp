@@ -48,7 +48,7 @@ class Database {
                         $sql = "INSERT INTO rates (currency, code, mid) VALUES ('$currency', '$code', '$mid')";
 
                         if (!$this->conn->query($sql)) {
-                            echo "Add record error: " . $this->conn->error;
+                            echo "Adding record error: " . $this->conn->error;
                         }
                     }
                 }
@@ -59,6 +59,29 @@ class Database {
             echo "Error: " . $e->getMessage();
         }
     }
+    public function getAllCodes(){
+        try {
+            if ($this->conn) {
+                $sql = "SELECT code FROM rates";
+                $result = $this->conn->query($sql);
+                if ($result->num_rows > 0) {
+                    $counter = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        $response[$counter] = $row;
+                        $counter++;
+                    }
+                    return $response;
+                }
+            else {
+                echo "Connection error: " . $this->conn->error;
+            }
+            }
+        }catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+
+    }
+
     public function closeConnection() {
         $this->conn->close();
     }

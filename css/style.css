@@ -30,7 +30,7 @@ button:hover{
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 }
 #buttonDisplayCalculator{
-    background: linear-gradient(to left, #9d50bb, #6e48aa);
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 }
 td{
     border-bottom: 2px solid black;
@@ -48,11 +48,13 @@ th{
 }
 #calculatorDiv{
     display: flex;
-    background: red;
 }
 #convertButton{
     height: 100%;
-    background: linear-gradient(to bottom, #b993d6, #8ca6db);
+    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+}
+#calculatorDiv input{
+    width: 60px;
 }
 
 footer {
@@ -66,9 +68,9 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+    background: linear-gradient(to right, #000000, #434343);
     color: white;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }

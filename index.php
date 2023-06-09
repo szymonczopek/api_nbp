@@ -101,42 +101,75 @@
     })
 
     buttonDisplayCalculator.addEventListener('click', async () => {
-        const currencies = ["USD", "EUR", "GBP", "JPY"];
-        displayCalculator(currencies)
+        var isError = false;
+        var message = '';
+        await fetch('http://localhost:63342/api_nbp/routes.php?page=getAllCodes', {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'GET',
+        })
+            .then(async (response) => await response.json())
+            .then(async (data) => {
+                if (data.error) {
+                    const error = `<p>${data.error}</p>`
+                    messageDiv.innerHTML = error;
+                }
+
+                const currencies = data[0]
+                console.log(currencies)
+
+                message = data[1]['message']
+                displayCalculator(currencies)
+
+            })
+            .catch((error) => {
+                isError = true;
+            });
 
 
+        if (isError) {
+            messageDiv.textContent = message;
+            messageDiv.style.color = 'red';
+            TableDiv.after(messageDiv)
+        }
     })
 
     function displayCalculator(currencies){
-       const calculatorDiv = document.createElement('div');
-       calculatorDiv.id = 'calculatorDiv';
-        const inputCurrency = document.createElement("input");
-        const selectCurrency1 = document.createElement("select");
-        const arrowDiv = document.createElement("div");
-        arrowDiv.id = 'arrowDiv';
-        arrowDiv.textContent = '\u2192';
-        arrowDiv.style.fontSize = '40px';
-        const selectCurrency2 = document.createElement("select");
-        const convertButton = document.createElement("button");
-        convertButton.id = 'convertButton';
-        convertButton.textContent = 'Convert';
+        const calculatorDiv = document.getElementById('calculatorDiv');
+        if (calculatorDiv) {
+            return;
+        }
+        else {
+            const calculatorDiv = document.createElement('div');
+            calculatorDiv.id = 'calculatorDiv';
+            const inputCurrency = document.createElement("input");
+            const selectCurrency1 = document.createElement("select");
+            const arrowDiv = document.createElement("div");
+            arrowDiv.id = 'arrowDiv';
+            arrowDiv.textContent = '\u2192';
+            arrowDiv.style.fontSize = '40px';
+            const selectCurrency2 = document.createElement("select");
+            const convertButton = document.createElement("button");
+            convertButton.id = 'convertButton';
+            convertButton.textContent = 'Convert';
 
-        createOptions(selectCurrency1, currencies)
-        createOptions(selectCurrency2, currencies)
+            createOptions(selectCurrency1, currencies)
+            createOptions(selectCurrency2, currencies)
 
-        calculatorDiv.appendChild(inputCurrency)
-        calculatorDiv.appendChild(selectCurrency1)
-        calculatorDiv.appendChild(arrowDiv)
-        calculatorDiv.appendChild(selectCurrency2)
-        calculatorDiv.appendChild(convertButton)
-        eventsBar.appendChild(calculatorDiv)
-
+            calculatorDiv.appendChild(inputCurrency)
+            calculatorDiv.appendChild(selectCurrency1)
+            calculatorDiv.appendChild(arrowDiv)
+            calculatorDiv.appendChild(selectCurrency2)
+            calculatorDiv.appendChild(convertButton)
+            eventsBar.appendChild(calculatorDiv)
+        }
     }
     function createOptions(selectElement, optionsArray) {
         for (let i = 0; i < optionsArray.length; i++) {
             const option = document.createElement("option");
-            option.value = optionsArray[i];
-            option.textContent = optionsArray[i];
+            option.value = optionsArray[i]['code'];
+            option.textContent = optionsArray[i]['code'];
             selectElement.appendChild(option);
         }
     }
