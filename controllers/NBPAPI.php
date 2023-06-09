@@ -1,6 +1,5 @@
 <?php
 
-
     class NBPAPI {
         private $urlRatesAll = 'http://api.nbp.pl/api/exchangerates/tables/A?format=json';
 

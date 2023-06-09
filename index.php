@@ -12,8 +12,9 @@
             <div>
                 <h1>API NBP</h1>
             </div>
-            <div>
+            <div id="eventsBar">
                 <button type="button" id="buttonGetAll">Get currency rates</button>
+                <button type="button" id="buttonDisplayCalculator">Convert currencies</button>
             </div>
         </div>
 
@@ -24,15 +25,17 @@
             <tbody id="TableBody">
             </tbody>
         </table>
-        <footer>Szymon Czopek</footer>
+        <footer><a href="https://github.com/szymonczopek">Github Szymon Czopek</a></footer>
     </main>
 </body>
 <script>
     const buttonGetAll = document.getElementById('buttonGetAll');
+    const buttonDisplayCalculator = document.getElementById('buttonDisplayCalculator');
     const messageDiv = document.createElement('div');
     const mainDiv = document.getElementById('mainDiv');
     const tableDiv = document.getElementById('TableDiv');
     const tableBody = document.getElementById('TableBody');
+    const eventsBar = document.getElementById('eventsBar');
 
     function displayHeader(headers){
         var TableHeadDiv = document.getElementById("TableHead");
@@ -50,7 +53,7 @@
     function displayRates(data){
         const headers = ['Currency','Code','PLN'];
         displayHeader(headers);
-        var counter = 1
+        var counter = 1;
 
         data.forEach((row) => {
             const newRow = document.createElement('tr');
@@ -82,7 +85,7 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message'];
-                //rates.forEach(element => console.log(element['currency'] + ' ' + element['mid']));
+
                 displayRates(rates);
             })
             .catch((error) => {
@@ -97,6 +100,46 @@
         TableDiv.after(messageDiv)
     })
 
+    buttonDisplayCalculator.addEventListener('click', async () => {
+        const currencies = ["USD", "EUR", "GBP", "JPY"];
+        displayCalculator(currencies)
+
+
+    })
+
+    function displayCalculator(currencies){
+       const calculatorDiv = document.createElement('div');
+       calculatorDiv.id = 'calculatorDiv';
+        const inputCurrency = document.createElement("input");
+        const selectCurrency1 = document.createElement("select");
+        const arrowDiv = document.createElement("div");
+        arrowDiv.id = 'arrowDiv';
+        arrowDiv.textContent = '\u2192';
+        arrowDiv.style.fontSize = '40px';
+        const selectCurrency2 = document.createElement("select");
+        const convertButton = document.createElement("button");
+        convertButton.id = 'convertButton';
+        convertButton.textContent = 'Convert';
+
+        createOptions(selectCurrency1, currencies)
+        createOptions(selectCurrency2, currencies)
+
+        calculatorDiv.appendChild(inputCurrency)
+        calculatorDiv.appendChild(selectCurrency1)
+        calculatorDiv.appendChild(arrowDiv)
+        calculatorDiv.appendChild(selectCurrency2)
+        calculatorDiv.appendChild(convertButton)
+        eventsBar.appendChild(calculatorDiv)
+
+    }
+    function createOptions(selectElement, optionsArray) {
+        for (let i = 0; i < optionsArray.length; i++) {
+            const option = document.createElement("option");
+            option.value = optionsArray[i];
+            option.textContent = optionsArray[i];
+            selectElement.appendChild(option);
+        }
+    }
 </script>
 </body>
 </html>

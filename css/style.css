@@ -9,6 +9,10 @@ body{
 body > div{
     margin: 0 50px;
 }
+a{
+    color: white;
+    text-underline-style: none;
+}
 button{
     color: white;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
@@ -25,6 +29,9 @@ button:hover{
 #buttonGetAll{
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 }
+#buttonDisplayCalculator{
+    background: linear-gradient(to left, #9d50bb, #6e48aa);
+}
 td{
     border-bottom: 2px solid black;
     border-right: 2px solid black;
@@ -35,6 +42,17 @@ th{
     font-weight: bold;
     border: 2px solid black;
     background: orange;
+}
+#eventsBar{
+    display: flex;
+}
+#calculatorDiv{
+    display: flex;
+    background: red;
+}
+#convertButton{
+    height: 100%;
+    background: linear-gradient(to bottom, #b993d6, #8ca6db);
 }
 
 footer {
