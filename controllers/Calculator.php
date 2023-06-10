@@ -11,8 +11,16 @@ class Calculator
         $this->currency2 = $currency2;
         $this->input = $input;
     }
-    function calculate(){
-
+    function convert() {
+        if($this->input > 0) {
+            if ($this->currency2 != 0) {
+                return $this->input * ($this->currency1 / $this->currency2);
+            } else {
+                throw new Exception("Error: Division by 0.");
+            }
+        } else {
+            throw new Exception("Error: Input must be greater than 0");
+        }
     }
 
 }

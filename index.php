@@ -104,7 +104,7 @@
     buttonDisplayCalculator.addEventListener('click', async () => {
         var isError = false;
         var message = '';
-        await fetch('http://localhost:63342/api_nbp/routes.php?page=getAllCodes', {
+        await fetch('http://localhost:63342/api_nbp/routes.php?page=getCodes', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -124,10 +124,10 @@
                 if(convertButton) {
                     convertButton.addEventListener('click', async () => {
                         console.log('przycisnieto convert')
-                        const selectCurrency1 = document.getElementById('selectCurrency1').value;
-                        const selectCurrency2 = document.getElementById('selectCurrency2').value;
-                        const inputCalculator = document.getElementById('inputCurrency').value;
-                        const url = `http://localhost:63342/api_nbp/routes.php?page=convert&currency1=${selectCurrency1}&currency2=${selectCurrency2}&inputCalculator=${inputCalculator}`;
+                        const selectCode1 = document.getElementById('selectCode1').value;
+                        const selectCode2 = document.getElementById('selectCode2').value;
+                        const inputCalculator = document.getElementById('inputCalculator').value;
+                        const url = `http://localhost:63342/api_nbp/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
                         var isError = false;
                         var message = '';
                         await fetch(url, {
@@ -183,28 +183,28 @@
         else {
             const calculatorDiv = document.createElement('div');
             calculatorDiv.id = 'calculatorDiv';
-            const inputCurrency = document.createElement("input");
-            inputCurrency.id = 'inputCurrency';
-            const selectCurrency1 = document.createElement("select");
-            selectCurrency1.id = 'selectCurrency1';
+            const inputCalculator = document.createElement("input");
+            inputCalculator.id = 'inputCalculator';
+            const selectCode1 = document.createElement("select");
+            selectCode1.id = 'selectCode1';
             const arrowDiv = document.createElement("div");
             arrowDiv.id = 'arrowDiv';
             arrowDiv.textContent = '\u2192';
-            const selectCurrency2 = document.createElement("select");
-            selectCurrency2.id = 'selectCurrency2';
+            const selectCode2 = document.createElement("select");
+            selectCode2.id = 'selectCode2';
             const convertButton = document.createElement("button");
             convertButton.id = 'convertButton';
             convertButton.textContent = 'Convert';
 
 
 
-            createOptions(selectCurrency1, currencies)
-            createOptions(selectCurrency2, currencies)
+            createOptions(selectCode1, currencies)
+            createOptions(selectCode2, currencies)
 
-            calculatorDiv.appendChild(inputCurrency)
-            calculatorDiv.appendChild(selectCurrency1)
+            calculatorDiv.appendChild(inputCalculator)
+            calculatorDiv.appendChild(selectCode1)
             calculatorDiv.appendChild(arrowDiv)
-            calculatorDiv.appendChild(selectCurrency2)
+            calculatorDiv.appendChild(selectCode2)
             calculatorDiv.appendChild(convertButton)
             eventsBar.appendChild(calculatorDiv)
 

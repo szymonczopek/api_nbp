@@ -81,10 +81,33 @@ class Database {
         }
 
     }
+    public function getRate($code){
+        try {
+            if ($this->conn) {
+                $sql = "SELECT mid FROM rates WHERE code='$code'";
+                $result = $this->conn->query($sql);
+                if ($result->num_rows > 0) {
+                    $counter = 0;
+                    while ($row = $result->fetch_assoc()) {
+                        $response = $row['mid'];
+                    }
+                    return $response;
+                }
+                else {
+                    echo "Connection error: " . $this->conn->error;
+                }
+            }
+        }catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
 
     public function closeConnection() {
         $this->conn->close();
     }
 }
+
+/*$database = new Database("localhost", "root", "", "api_nbp");
+print_r($database->getRate('USD'));*/
 
 ?>
