@@ -49,11 +49,16 @@ th{
 #calculatorDiv{
     display: flex;
 }
+#arrowDiv{
+    font-size: 40px;
+    margin: 0 20px;
+}
 #convertButton{
     height: 100%;
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 }
 #calculatorDiv input{
+    margin: 0 20px;
     width: 60px;
 }
 
