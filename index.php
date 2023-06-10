@@ -118,12 +118,10 @@
                 }
 
                 const currencies = data[0]
-                message = data[1]['message']
 
                 const convertButton = displayCalculator(currencies)
                 if(convertButton) {
                     convertButton.addEventListener('click', async () => {
-                        console.log('przycisnieto convert')
                         const selectCode1 = document.getElementById('selectCode1').value;
                         const selectCode2 = document.getElementById('selectCode2').value;
                         const inputCalculator = document.getElementById('inputCalculator').value;
@@ -143,7 +141,8 @@
                                     messageDiv.innerHTML = error;
                                 }
 
-                                console.log(data);
+                                const resultDiv = document.getElementById('resultDiv');
+                                resultDiv.textContent = data;
                             })
                             .catch((error) => {
                                 isError = true;
@@ -190,6 +189,8 @@
             const arrowDiv = document.createElement("div");
             arrowDiv.id = 'arrowDiv';
             arrowDiv.textContent = '\u2192';
+            const resultDiv = document.createElement("div");
+            resultDiv.id = 'resultDiv';
             const selectCode2 = document.createElement("select");
             selectCode2.id = 'selectCode2';
             const convertButton = document.createElement("button");
@@ -204,6 +205,7 @@
             calculatorDiv.appendChild(inputCalculator)
             calculatorDiv.appendChild(selectCode1)
             calculatorDiv.appendChild(arrowDiv)
+            calculatorDiv.appendChild(resultDiv)
             calculatorDiv.appendChild(selectCode2)
             calculatorDiv.appendChild(convertButton)
             eventsBar.appendChild(calculatorDiv)

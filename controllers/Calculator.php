@@ -2,19 +2,20 @@
 
 class Calculator
 {
-    private $currency1;
-    private $currency2;
+    private $rate1;
+    private $rate2;
     private $input;
 
-    public function __construct($currency1, $currency2, $input){
-        $this->currency1 = $currency1;
-        $this->currency2 = $currency2;
+    public function __construct($input, $rate1, $rate2){
         $this->input = $input;
+        $this->rate1 = $rate1;
+        $this->rate2 = $rate2;
     }
-    function convert() {
+    function convert():float {
         if($this->input > 0) {
-            if ($this->currency2 != 0) {
-                return $this->input * ($this->currency1 / $this->currency2);
+            if ($this->rate2 != 0) {
+                 $result = $this->input * ($this->rate1 / $this->rate2);
+                return number_format($result, 4);
             } else {
                 throw new Exception("Error: Division by 0.");
             }

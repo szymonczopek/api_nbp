@@ -107,7 +107,5 @@ class Database {
     }
 }
 
-/*$database = new Database("localhost", "root", "", "api_nbp");
-print_r($database->getRate('USD'));*/
 
 ?>
