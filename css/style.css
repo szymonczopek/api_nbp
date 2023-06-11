@@ -3,66 +3,82 @@
     align-items: center;
    margin: 0px 20px;
 }
+
 body{
     margin: 0;
 }
+
 body > div{
     margin: 0 50px;
 }
+
 a{
     color: white;
     text-underline-style: none;
 }
+
 button{
     color: white;
     text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
     border-top: black 2px solid;
-    height: 40px;
+    height: 5vh;
     font-weight: bold;
     font-size: 0.9rem;
     margin: 5px;
     margin: 0 50px;
+    border-radius: 1vh;
 }
+
 button:hover{
     opacity: 0.6;
 }
-#buttonGetAll{
+
+#buttonGetAll {
     background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
 }
-#buttonDisplayCalculator{
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+
+#buttonDisplayHistory{
+    background: linear-gradient(to top, #c31432, #240b36);
 }
+
+#buttonDisplayCalculator, #convertButton {
+    background: linear-gradient(to bottom, #8e2de2, #4a00e0);
+
+}
+
 td{
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     text-align: center;
-    height: 30px;
+    height: 40px;
 }
+
 th{
     font-weight: bold;
     border: 2px solid black;
     background: orange;
 }
+
 #eventsBar{
     display: flex;
 }
+
 #calculatorDiv{
     display: flex;
 }
+
 #arrowDiv{
     font-size: 40px;
     margin: 0 20px;
 }
-#convertButton{
-    height: 100%;
-    background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-}
+
 #calculatorDiv input{
    width: 70px;
     display: flex;
     text-align: center;
     font-size: 1.2rem;
 }
+
 #resultDiv{
     border: black solid 1px;
     text-align: center;

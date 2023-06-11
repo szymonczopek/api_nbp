@@ -16,7 +16,7 @@ if(filter_input(INPUT_GET, 'page') === 'getAll'){
     echo json_encode($ratesAll);
 }
 if(filter_input(INPUT_GET, 'page') === 'getCodes'){
-    $codes[0] = $database->getCodes();
+    $codes[0] = $database->getRatesCodes();
 
     header('Content-Type: application/json');
     echo json_encode($codes);
@@ -26,11 +26,11 @@ if(filter_input(INPUT_GET, 'page') === 'convert') {
 
     if($inputCalculatorFloat > 0 && $inputCalculatorFloat !== false){
         $database = new Database("localhost", "root", "", "api_nbp");
-        $mid1 = $database->getMid($_GET['code1']);
-        $mid2 = $database->getMid($_GET['code2']);
+        $mid1 = $database->getRateMid($_GET['code1']);
+        $mid2 = $database->getRateMid($_GET['code2']);
 
-        $id1 = $database->getId($_GET['code1']);
-        $id2 = $database->getId($_GET['code2']);
+        $id1 = $database->getRateId($_GET['code1']);
+        $id2 = $database->getRateId($_GET['code2']);
 
         $calculator = new Calculator($inputCalculatorFloat,$mid1, $mid2);
 
@@ -49,6 +49,14 @@ if(filter_input(INPUT_GET, 'page') === 'convert') {
     header('Content-Type: application/json');
     echo json_encode($result);
 }
+
+if(filter_input(INPUT_GET, 'page') === 'getHistory') {
+    $history = $database->getHistory();
+
+    header('Content-Type: application/json');
+    echo json_encode($history);
+}
+
 $database->closeConnection();
 
 

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="https://imageupload.io/ib/TJLMOL9Mnnifdtj_1686512943.png">
 </head>
 <body>
     <main>
@@ -15,6 +16,7 @@
             <div id="eventsBar">
                 <button type="button" id="buttonGetAll">Get currency rates</button>
                 <button type="button" id="buttonDisplayCalculator">Convert currencies</button>
+                <button type="button" id="buttonDisplayHistory">Conversion history</button>
             </div>
         </div>
 
@@ -31,6 +33,7 @@
 <script>
     const buttonGetAll = document.getElementById('buttonGetAll');
     const buttonDisplayCalculator = document.getElementById('buttonDisplayCalculator');
+    const buttonDisplayHistory = document.getElementById('buttonDisplayHistory');
     const messageDiv = document.createElement('div');
     const mainDiv = document.getElementById('mainDiv');
     const tableDiv = document.getElementById('TableDiv');
@@ -54,7 +57,6 @@
     function displayRates(data){
         const headers = ['Currency','Code','PLN'];
         displayHeader(headers);
-        var counter = 1;
 
         data.forEach((row) => {
             const newRow = document.createElement('tr');
@@ -62,7 +64,20 @@
                 const newCell = document.createElement('td');
                 newCell.textContent = row[cell];
                 newRow.appendChild(newCell);
-                counter++;
+            })
+            tableBody.append(newRow);
+        })
+    }
+    function displayHistory(data){
+        const headers = ['Input','From','','','To','','','Conversion'];
+        displayHeader(headers);
+
+        data.forEach((row) => {
+            const newRow = document.createElement('tr');
+            Object.keys(row).forEach(cell => {
+                const newCell = document.createElement('td');
+                newCell.textContent = row[cell];
+                newRow.appendChild(newCell);
             })
             tableBody.append(newRow);
         })
@@ -92,16 +107,17 @@
 
 
 
-            createOptions(selectCode1, currencies)
-            createOptions(selectCode2, currencies)
+            createOptions(selectCode1, currencies);
+            createOptions(selectCode2, currencies);
 
-            calculatorDiv.appendChild(inputCalculator)
-            calculatorDiv.appendChild(selectCode1)
-            calculatorDiv.appendChild(arrowDiv)
-            calculatorDiv.appendChild(resultDiv)
-            calculatorDiv.appendChild(selectCode2)
-            calculatorDiv.appendChild(convertButton)
-            eventsBar.appendChild(calculatorDiv)
+            calculatorDiv.appendChild(inputCalculator);
+            calculatorDiv.appendChild(selectCode1);
+            calculatorDiv.appendChild(arrowDiv);
+            calculatorDiv.appendChild(resultDiv);
+            calculatorDiv.appendChild(selectCode2);
+            calculatorDiv.appendChild(convertButton);
+
+            buttonDisplayCalculator.after(calculatorDiv);
 
             return convertButton;
         }
@@ -134,7 +150,7 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message'];
-
+                tableBody.innerHTML = '';
                 displayRates(rates);
             })
             .catch((error) => {
@@ -210,6 +226,35 @@
         }
     })
 
+    buttonDisplayHistory.addEventListener('click', async () => {
+        var isError = false;
+        var message = '';
+        await fetch('http://localhost:63342/api_nbp/routes.php?page=getHistory', {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'GET',
+        })
+            .then(async (response) => await response.json())
+            .then(async (data) => {
+                if (data.error) {
+                    const error = `<p>${data.error}</p>`
+                    messageDiv.innerHTML = error;
+                }
+                tableBody.innerHTML = '';
+                displayHistory(data);
+            })
+            .catch((error) => {
+                isError = true;
+            });
+
+
+        if (isError) {
+            messageDiv.textContent = message;
+            messageDiv.style.color = 'red';
+            TableDiv.after(messageDiv)
+        }
+    })
 </script>
 </body>
 </html>
