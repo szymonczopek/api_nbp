@@ -40,6 +40,49 @@ class Database {
 
                     $result = $stmt->get_result();
                     if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        if ($row['mid'] !== $mid) {//check is mid current
+                            $sql = "UPDATE rates SET mid = ? WHERE code = ?";
+                            $stmt = $this->conn->prepare($sql);
+                            $stmt->bind_param("ss", $mid, $code);
+
+                            if (!$stmt->execute()) {
+                                echo "Error while updating: " . $stmt->error;
+                            }
+                        }
+                    } else {
+                        $sql = "INSERT INTO rates (currency, code, mid) VALUES (?, ?, ?)";
+                        $stmt = $this->conn->prepare($sql);
+                        $stmt->bind_param("sss", $currency, $code, $mid);
+
+                        if (!$stmt->execute()) {
+                            echo "Adding record error: " . $stmt->error;
+                        }
+                    }
+                }
+            } else {
+                echo "Connection error: " . $this->conn->error;
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
+    /*public function addOrUpdateRecord($data) {
+        try {
+            if ($this->conn) {
+                foreach ($data as $record) {
+                    $currency = $record['currency'];
+                    $code = $record['code'];
+                    $mid = $record['mid'];
+
+                    $sql = "SELECT * FROM rates WHERE code = ?";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->bind_param("s", $code);
+                    $stmt->execute();
+
+                    $result = $stmt->get_result();
+                    if ($result->num_rows > 0) {
                         $sql = "UPDATE rates SET mid = ? WHERE code = ?";
                         $stmt = $this->conn->prepare($sql);
                         $stmt->bind_param("ss", $mid, $code);
@@ -63,7 +106,7 @@ class Database {
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
-    }
+    }*/
 
     public function addPln(){
         try {
