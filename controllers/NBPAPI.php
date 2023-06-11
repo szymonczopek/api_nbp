@@ -18,7 +18,7 @@
                 }
                 return $data;
             } catch (Exception $e) {
-                echo 'Error: ' . $e->getMessage();
+                return 'Error: ' . $e->getMessage();
             }
         }
 

@@ -67,6 +67,54 @@
             tableBody.append(newRow);
         })
     }
+    function displayCalculator(currencies){
+        const calculatorDiv = document.getElementById('calculatorDiv');
+        if (calculatorDiv) {
+            return;
+        }
+        else {
+            const calculatorDiv = document.createElement('div');
+            calculatorDiv.id = 'calculatorDiv';
+            const inputCalculator = document.createElement("input");
+            inputCalculator.id = 'inputCalculator';
+            const selectCode1 = document.createElement("select");
+            selectCode1.id = 'selectCode1';
+            const arrowDiv = document.createElement("div");
+            arrowDiv.id = 'arrowDiv';
+            arrowDiv.textContent = '\u2192';
+            const resultDiv = document.createElement("div");
+            resultDiv.id = 'resultDiv';
+            const selectCode2 = document.createElement("select");
+            selectCode2.id = 'selectCode2';
+            const convertButton = document.createElement("button");
+            convertButton.id = 'convertButton';
+            convertButton.textContent = 'Convert';
+
+
+
+            createOptions(selectCode1, currencies)
+            createOptions(selectCode2, currencies)
+
+            calculatorDiv.appendChild(inputCalculator)
+            calculatorDiv.appendChild(selectCode1)
+            calculatorDiv.appendChild(arrowDiv)
+            calculatorDiv.appendChild(resultDiv)
+            calculatorDiv.appendChild(selectCode2)
+            calculatorDiv.appendChild(convertButton)
+            eventsBar.appendChild(calculatorDiv)
+
+            return convertButton;
+        }
+    }
+    function createOptions(selectElement, optionsArray) {
+        for (let i = 0; i < optionsArray.length; i++) {
+            const option = document.createElement("option");
+            option.value = optionsArray[i]['code'];
+            option.id = i + 1;
+            option.textContent = optionsArray[i]['code'];
+            selectElement.appendChild(option);
+        }
+    }
 
     buttonGetAll.addEventListener('click', async () => {
          var isError = false;
@@ -127,7 +175,6 @@
                         const inputCalculator = document.getElementById('inputCalculator').value;
                         const url = `http://localhost:63342/api_nbp/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
                         var isError = false;
-                        var message = '';
                         await fetch(url, {
                             headers: {
                                 'Content-Type': 'application/json',
@@ -147,16 +194,6 @@
                             .catch((error) => {
                                 isError = true;
                             });
-
-                        messageDiv.textContent = message;
-                        if (isError) {
-                            messageDiv.style.color = 'red';
-                        }
-                        else messageDiv.style.color = 'black';
-                        TableDiv.after(messageDiv)
-
-
-
                     })
                 }
 
@@ -173,55 +210,6 @@
         }
     })
 
-
-    function displayCalculator(currencies){
-        const calculatorDiv = document.getElementById('calculatorDiv');
-        if (calculatorDiv) {
-            return;
-        }
-        else {
-            const calculatorDiv = document.createElement('div');
-            calculatorDiv.id = 'calculatorDiv';
-            const inputCalculator = document.createElement("input");
-            inputCalculator.id = 'inputCalculator';
-            const selectCode1 = document.createElement("select");
-            selectCode1.id = 'selectCode1';
-            const arrowDiv = document.createElement("div");
-            arrowDiv.id = 'arrowDiv';
-            arrowDiv.textContent = '\u2192';
-            const resultDiv = document.createElement("div");
-            resultDiv.id = 'resultDiv';
-            const selectCode2 = document.createElement("select");
-            selectCode2.id = 'selectCode2';
-            const convertButton = document.createElement("button");
-            convertButton.id = 'convertButton';
-            convertButton.textContent = 'Convert';
-
-
-
-            createOptions(selectCode1, currencies)
-            createOptions(selectCode2, currencies)
-
-            calculatorDiv.appendChild(inputCalculator)
-            calculatorDiv.appendChild(selectCode1)
-            calculatorDiv.appendChild(arrowDiv)
-            calculatorDiv.appendChild(resultDiv)
-            calculatorDiv.appendChild(selectCode2)
-            calculatorDiv.appendChild(convertButton)
-            eventsBar.appendChild(calculatorDiv)
-
-            return convertButton;
-        }
-    }
-    function createOptions(selectElement, optionsArray) {
-        for (let i = 0; i < optionsArray.length; i++) {
-            const option = document.createElement("option");
-            option.value = optionsArray[i]['code'];
-            option.id = i + 1;
-            option.textContent = optionsArray[i]['code'];
-            selectElement.appendChild(option);
-        }
-    }
 </script>
 </body>
 </html>
