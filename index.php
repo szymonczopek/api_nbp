@@ -151,7 +151,7 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message'];
-                tableBody.innerHTML = '';
+
                 displayRates(rates);
             })
             .catch((error) => {
