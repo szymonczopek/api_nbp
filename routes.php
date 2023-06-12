@@ -3,7 +3,12 @@ require 'controllers/Database.php';
 require 'controllers/NBPAPI.php';
 require 'controllers/Calculator.php';
 
-$database = new Database("localhost", "root", "", "api_nbp");
+$serverName = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "api_nbp";
+
+$database = new Database($serverName, $userName, $password, $dbName);
 
 if(filter_input(INPUT_GET, 'page') === 'getAll'){
     $nbpApi = new NBPAPI();
