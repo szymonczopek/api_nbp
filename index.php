@@ -246,7 +246,7 @@
                     messageDiv.innerHTML = error;
                 }
                 message = data[0]['message'];
-                tableBody.innerHTML = '';
+                tableDiv.innerHTML = '';
                 if(message === ' ') {
                     displayHistory(data);
                 }
