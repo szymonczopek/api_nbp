@@ -247,8 +247,9 @@
                 }
                 message = data[0]['message'];
                 tableBody.innerHTML = '';
-                displayHistory(data);
-
+                if(!message) {
+                    displayHistory(data);
+                }
             })
             .catch((error) => {
                 isError = true;
