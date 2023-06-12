@@ -3,10 +3,10 @@ require 'controllers/Database.php';
 require 'controllers/NBPAPI.php';
 require 'controllers/Calculator.php';
 
-$serverName = "localhost";
-$userName = "root";
-$password = "";
-$dbName = "api_nbp";
+$serverName = "eu-cdbr-west-03.cleardb.net";
+$userName = "b919ae985fbd50";
+$password = "f02c11f7";
+$dbName = "heroku_7cc51f4f51c7b98";
 
 $database = new Database($serverName, $userName, $password, $dbName);
 
