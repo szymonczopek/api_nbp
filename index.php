@@ -243,8 +243,8 @@
                     messageDiv.innerHTML = error;
                 }
                 message = data[0]['message'];
+                tableBody.innerHTML = '';
                 if(!message) {
-                    tableBody.innerHTML = '';
                     displayHistory(data);
                 }
             })
