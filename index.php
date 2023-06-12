@@ -66,6 +66,7 @@
                 newRow.appendChild(newCell);
             })
             tableBody.append(newRow);
+            tableDiv.append(tableBody);
         })
     }
     function displayHistory(data){
@@ -151,7 +152,7 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message'];
-                tableDiv.innerHTML = '';
+                tableBody.innerHTML = '';
                 displayRates(rates);
             })
             .catch((error) => {
@@ -246,7 +247,7 @@
                     messageDiv.innerHTML = error;
                 }
                 message = data[0]['message'];
-                tableBody.innerHTML = '';
+                tableDiv.innerHTML = '';
                 if(!message) {
                     displayHistory(data);
                 }
