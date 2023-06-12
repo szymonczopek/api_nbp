@@ -66,7 +66,6 @@
                 newRow.appendChild(newCell);
             })
             tableBody.append(newRow);
-            tableDiv.append(tableBody);
         })
     }
     function displayHistory(data){
@@ -247,7 +246,7 @@
                     messageDiv.innerHTML = error;
                 }
                 message = data[0]['message'];
-                tableDiv.innerHTML = '';
+                tableBody.innerHTML = '';
                 if(!message) {
                     displayHistory(data);
                 }
