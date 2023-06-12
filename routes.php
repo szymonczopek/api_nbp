@@ -30,7 +30,6 @@ if(filter_input(INPUT_GET, 'page') === 'convert') {
     $inputCalculatorFloat = filter_input(INPUT_GET, 'inputCalculator', FILTER_VALIDATE_FLOAT);
 
     if($inputCalculatorFloat > 0 && $inputCalculatorFloat !== false){
-        $database = new Database("localhost", "root", "", "api_nbp");
         $mid1 = $database->getRateMid($_GET['code1']);
         $mid2 = $database->getRateMid($_GET['code2']);
 
