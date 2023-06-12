@@ -170,6 +170,7 @@
         var isError = false;
         var message = '';
         await fetch('https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=getCodes', {
+        //await fetch('http://localhost:63342/api_nbp/routes.php?page=getCodes', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -191,6 +192,7 @@
                         const selectCode2 = document.getElementById('selectCode2').value;
                         const inputCalculator = document.getElementById('inputCalculator').value;
                         const url = `https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
+                        //const url = `http://localhost:63342/api_nbp/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
                         var isError = false;
                         await fetch(url, {
                             headers: {
@@ -231,6 +233,7 @@
         var isError = false;
         var message = '';
         await fetch('https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=getHistory', {
+        //await fetch('http://localhost:63342/api_nbp/routes.php?page=getHistory', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -244,7 +247,7 @@
                 }
                 message = data[0]['message'];
                 tableBody.innerHTML = '';
-                if(!message) {
+                if(message === ' ') {
                     displayHistory(data);
                 }
             })
@@ -254,7 +257,7 @@
 
             messageDiv.textContent = message;
             messageDiv.style.color = 'red';
-            TableDiv.after(messageDiv)
+            eventsBar.after(messageDiv)
     })
 </script>
 </body>
