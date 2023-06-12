@@ -169,7 +169,7 @@
     buttonDisplayCalculator.addEventListener('click', async () => {
         var isError = false;
         var message = '';
-        await fetch('http://localhost:63342/api_nbp/routes.php?page=getCodes', {
+        await fetch('https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=getCodes', {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -190,7 +190,7 @@
                         const selectCode1 = document.getElementById('selectCode1').value;
                         const selectCode2 = document.getElementById('selectCode2').value;
                         const inputCalculator = document.getElementById('inputCalculator').value;
-                        const url = `http://localhost:63342/api_nbp/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
+                        const url = `https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=convert&code1=${selectCode1}&code2=${selectCode2}&inputCalculator=${inputCalculator}`;
                         var isError = false;
                         await fetch(url, {
                             headers: {
@@ -230,7 +230,7 @@
     buttonDisplayHistory.addEventListener('click', async () => {
         var isError = false;
         var message = '';
-        await fetch('http://localhost:63342/api_nbp/routes.php?page=getHistory', {
+        await fetch('https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=getHistory', {
             headers: {
                 'Content-Type': 'application/json',
             },
