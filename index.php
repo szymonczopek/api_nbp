@@ -135,7 +135,8 @@
     buttonGetAll.addEventListener('click', async () => {
          var isError = false;
          var message = '';
-        await fetch('http://localhost:63342/api_nbp/routes.php?page=getAll', {
+        //await fetch('http://localhost:63342/api_nbp/routes.php?page=getAll', {
+        await fetch('https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=getAll', {
             headers: {
                 'Content-Type': 'application/json',
             },
