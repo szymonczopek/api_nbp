@@ -151,7 +151,7 @@
 
                 const rates = data[0]['rates'];
                 message = data[1]['message'];
-
+                tableBody.innerHTML = '';
                 displayRates(rates);
             })
             .catch((error) => {
@@ -246,7 +246,7 @@
                     messageDiv.innerHTML = error;
                 }
                 message = data[0]['message'];
-                tableDiv.innerHTML = '';
+                tableBody.innerHTML = '';
                 if(message === ' ') {
                     displayHistory(data);
                 }
