@@ -242,20 +242,19 @@
                     const error = `<p>${data.error}</p>`
                     messageDiv.innerHTML = error;
                 }
-                message = data[1]['message'];
-                tableBody.innerHTML = '';
-                displayHistory(data);
+                message = data[0]['message'];
+                if(!message) {
+                    tableBody.innerHTML = '';
+                    displayHistory(data);
+                }
             })
             .catch((error) => {
                 isError = true;
             });
 
-
-        if (isError) {
             messageDiv.textContent = message;
             messageDiv.style.color = 'red';
             TableDiv.after(messageDiv)
-        }
     })
 </script>
 </body>

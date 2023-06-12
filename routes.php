@@ -8,6 +8,11 @@ $userName = "b919ae985fbd50";
 $password = "f02c11f7";
 $dbName = "heroku_7cc51f4f51c7b98";
 
+/*$serverName = "localhost";
+$userName = "root";
+$password = "";
+$dbName = "api_nbp";*/
+
 $database = new Database($serverName, $userName, $password, $dbName);
 
 if(filter_input(INPUT_GET, 'page') === 'getAll'){
