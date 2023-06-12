@@ -57,6 +57,9 @@ if(filter_input(INPUT_GET, 'page') === 'convert') {
 if(filter_input(INPUT_GET, 'page') === 'getHistory') {
     $history = $database->getHistory();
 
+    if($history === null){
+        $history[] = ['message'=> 'History is empty.'];
+    }
     header('Content-Type: application/json');
     echo json_encode($history);
 }

@@ -184,7 +184,8 @@ INNER JOIN rates AS rates2 ON history.idRate2 = rates2.id";
                     return $response;
                 }
                 else {
-                    echo "Error: " . $this->conn->error;
+                    //echo "Error: " . $this->conn->error;
+                    return null;
                 }
             }
         }catch (Exception $e) {

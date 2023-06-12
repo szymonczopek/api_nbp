@@ -242,6 +242,7 @@
                     const error = `<p>${data.error}</p>`
                     messageDiv.innerHTML = error;
                 }
+                message = data[1]['message'];
                 tableBody.innerHTML = '';
                 displayHistory(data);
             })
