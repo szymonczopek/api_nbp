@@ -154,7 +154,7 @@ class Database {
         }
     }
 
-    public function addHistory($input, $result, $idRate1, $idRate2){
+    public function addHistoryRow($input, $result, $idRate1, $idRate2){
         try {
             if ($this->conn) {
                 $sql = "INSERT INTO history (input, result, idRate1, idRate2) VALUES (?, ?, ?, ?)";
@@ -197,7 +197,4 @@ INNER JOIN rates AS rates2 ON history.idRate2 = rates2.id";
     }
 }
 
-/*$database = new Database("localhost", "root", "", "api_nbp");
-$uu=$database->getHistory();
-print_r($uu);*/
 ?>

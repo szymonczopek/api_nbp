@@ -37,7 +37,7 @@ if(filter_input(INPUT_GET, 'page') === 'convert') {
         try {
             $result = $calculator->convert();
             if (is_float($result)) {
-                $database->addHistory($inputCalculatorFloat, $result,$id1, $id2);
+                $database->addHistoryRow($inputCalculatorFloat, $result,$id1, $id2);
             }
         } catch (Exception $e) {
             echo "Exception: " . $e->getMessage();

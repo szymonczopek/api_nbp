@@ -69,7 +69,7 @@
         })
     }
     function displayHistory(data){
-        const headers = ['Input','From','','','To','','','Conversion'];
+        const headers = ['Input','From','','Value','To','','Value','Conversion'];
         displayHeader(headers);
 
         data.forEach((row) => {
