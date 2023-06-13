@@ -16,7 +16,7 @@ class Calculator
         if($this->input > 0) {
             if ($this->rate2 != 0) {
                  $result = $this->input * ($this->rate1 / $this->rate2);
-                return number_format($result, 2);
+                return $result;
             } else {
                 throw new Exception("Error: Division by 0.");
             }

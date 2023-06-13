@@ -73,7 +73,7 @@ th{
 }
 
 #calculatorDiv input{
-   width: 70px;
+    width: 70px;
     display: flex;
     text-align: center;
     font-size: 1.2rem;

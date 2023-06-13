@@ -208,7 +208,7 @@
                                 }
 
                                 const resultDiv = document.getElementById('resultDiv');
-                                resultDiv.textContent = data;
+                                resultDiv.innerHTML = `<p>${data}</p>`;
                             })
                             .catch((error) => {
                                 isError = true;
