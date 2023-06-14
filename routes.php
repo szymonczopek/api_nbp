@@ -5,7 +5,7 @@ require 'controllers/Calculator.php';
 
 $serverName = "eu-cdbr-west-03.cleardb.net";
 $userName = "b919ae985fbd50";
-$password = "f02c11f7";
+$password = "szymon";
 $dbName = "heroku_7cc51f4f51c7b98";
 
 /*$serverName = "localhost";
