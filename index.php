@@ -40,8 +40,8 @@
     const tableBody = document.getElementById('TableBody');
     const eventsBar = document.getElementById('eventsBar');
 
-    const url = 'https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=';
-    //const url = 'http://localhost:63342/api_nbp/routes.php?page=';
+    //const url = 'https://api-nbp-szymonczopek.herokuapp.com/routes.php?page=';
+    const url = 'http://localhost:63342/api_nbp/routes.php?page=';
 
     function displayHeader(headers){
         var TableHeadDiv = document.getElementById("TableHead");
